@@ -2,6 +2,10 @@ import React from "react";
 import { useLoaderData, useParams } from "react-router";
 import { setReadBooksId } from "../../../Utilities/StoreBooks";
 import { setWishListBooksId } from "../../../Utilities/WishListBooks";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal = withReactContent(Swal)
 
 const SingleBook = () => {
   const { bookId } = useParams();
@@ -27,10 +31,21 @@ const SingleBook = () => {
   const handleRead = (id) => {
 
     setReadBooksId(id)
+
+    MySwal.fire({
+      title: "Read list Added",
+      icon: "success",
+      draggable: true
+    })
   }
 
   const handleWishList = (id) => {
     setWishListBooksId(id)
+    MySwal.fire({
+      title: "Wish list Added",
+      icon: "success",
+      draggable: true
+    })
   }
 
   return (
